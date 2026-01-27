@@ -1,5 +1,8 @@
 ---
-import FancyText from "./FancyText.astro"
+import FancyText from "./FancyText.astro";
+import ProjectCard from "./ProjectCard.astro";
+const allProjects = Object.values(import.meta.glob('../pages/projects/*.md', { eager: true }));
+const featuredProjects = allProjects.sort((a: any, b: any) => a.frontmatter.featureOrder - b.frontmatter.featureOrder).slice(0, 3);
 ---
 
 <section id="projects" class="projectSection">
@@ -11,7 +14,9 @@ import FancyText from "./FancyText.astro"
       <h3 class="title">Recent projects</h3>
       <p>Here are a few projects I’ve worked on lately (or that I’m currently working on) that I’m excited to show off! You can also see additional work on the <a href='/projects'>All Projects</a> page.</p>
       <div class="projectCardSection">
-        <!-- {projects.edges.map(project => <ProjectCard project={project.node} key={project.node.contentful_id} />)} -->
+        {featuredProjects.map(project => (
+          <ProjectCard project={project} />
+        ))}
       </div>
     </div>
   </div>

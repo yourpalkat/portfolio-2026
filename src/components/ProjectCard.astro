@@ -1,0 +1,66 @@
+---
+const { project } = Astro.props;
+---
+
+<article class="projectCard">
+  <h4>{project.frontmatter.title}</h4>
+  <div class="thumbnail">
+    <!-- TODO: fix broken thumbnail image path -->
+    <img  src={project.frontmatter.thumbnail.url} alt={project.frontmatter.thumbnail.alt} />
+  </div>
+  <div class="projectContent">
+    <p>
+      {project.frontmatter.introText}
+    </p>
+    <a href={`/projects/${project.frontmatter.slug}`}>Read more...</a>
+  </div>
+</article>
+
+<style>
+.projectCard {
+  margin-bottom: 4.8rem;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  column-gap: 2.4rem;
+}
+
+.thumbnail {
+  margin-top: 0.5rem;
+}
+.thumbnail img {
+  width: 100%;
+}
+
+.projectCard h4 {
+  margin-top: 0;
+  padding-bottom: 0.5rem;
+  grid-column: 1 / -1;
+  border-bottom: 1px solid black;
+}
+.projectContent a {
+  color: black;
+  font-family: var(--font-body-bold);
+  font-weight: 700;
+  text-decoration-color: rgba(0, 0, 0, 0.3);
+  transition: text-decoration-color 0.3s ease;
+}
+.projectContent a:hover,
+.projectContent a:focus {
+  text-decoration-color: rgba(0, 0, 0, 1);
+}
+.projectContent p:first-of-type {
+  margin-top: 0;
+}
+
+@media (max-width: 505px) {
+  .thumbnail {
+    grid-column: 1 / -1;
+    margin-bottom: 2.4rem;
+    margin-top: 0;
+    max-width: 200px;
+  }
+  .projectContent {
+    grid-column: 1 / -1;
+  }
+}
+</style>
