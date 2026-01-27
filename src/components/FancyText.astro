@@ -1,0 +1,35 @@
+---
+const { text, label } = Astro.props;
+const output = text.split('');
+---
+
+<h2 class="fancyTitle" aria-label={label}>
+  {output.map((letter: String, i: Number) => <span aria-hidden={true}>{letter}</span>)}
+</h2>
+
+<style>
+.fancyTitle {
+  font-family: var(--font-heading);
+  margin-left: -1rem;
+  margin-top: 0;
+  font-size: 15vw;
+  color: rgba(115, 0, 10, 0.6);
+  letter-spacing: -0.25em;
+  line-height: 0.75;
+  word-break: break-all;
+  word-spacing: 0.35em;
+}
+
+@media (min-width: 1200px) {
+  .fancyTitle {
+    font-size: 17.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .fancyTitle {
+    font-size: 26vw;
+    line-height: 0.65;
+  }
+}
+</style>

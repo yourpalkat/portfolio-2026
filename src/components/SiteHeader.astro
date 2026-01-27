@@ -1,0 +1,120 @@
+---
+---
+
+<header class="siteHeader">
+  <div class="gridWrapper">
+    <h1 class="siteName">
+      <a href="/">Katharine Murr</a>
+    </h1>
+    <h1 class="mobileSiteName">
+      <a href="/">KM</a>
+    </h1>
+    <nav class="mainNav">
+        <ul>
+          <li><a href='/projects'>Projects</a></li>
+          <li><a href='/writing'>Writing</a></li>
+        </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+.siteName {
+  grid-column: 2 / 6;
+  font-family: var(--font-body-bold);
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: -0.025rem;
+  margin-top: 0;
+}
+.mobileSiteName {
+  grid-column: 2 / 3;
+  font-family: $font-heading;
+  text-transform: lowercase;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: -0.025rem;
+  margin-top: 0;
+  display: none;
+}
+.siteName a,
+.mobileSiteName a {
+  color: #000;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.3s ease, color 0.3s ease;
+}
+.siteName a:focus,
+.siteName a:hover,
+.mobileSiteName a:focus,
+.mobileSiteName a:hover {
+  color: var(--highlight);
+  text-decoration-color: var(--highlight);
+}
+
+.siteHeader {
+  height: 7rem;
+  padding-top: 3rem;
+  background-color: var(--background);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+@media (max-width: 505px) {
+  .mobileSiteName {
+    display: block;
+  }
+  .siteName {
+    display: none;
+  }
+}
+
+/* Main Navigation styles 
+  =================================================== */
+
+.mainNav {
+  grid-column: 7 / -2;
+}
+.mainNav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+.mainNav li {
+  margin-inline-end: 4rem;
+}
+.mainNav a {
+  color: #333;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: -0.025rem;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.3s ease, color 0.3s ease;
+}
+.mainNav a:hover,
+.mainNav a:focus {
+  color: var(--highlight);
+  text-decoration-color: var(--highlight);
+}
+
+@media (max-width: 768px) {
+  .mainNav {
+    grid-column: 6 / -2;
+  }
+  .mainNav ul {
+    justify-content: flex-end;
+  }
+  .mainNav li {
+    margin-inline-end: 0;
+    margin-inline-start: 4rem;
+  }
+}
+@media (max-width: 505px) {
+  .mainNav {
+    grid-column: 3 / -2;
+  }
+}
+</style>

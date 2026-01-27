@@ -1,0 +1,84 @@
+---
+---
+<footer>
+  <div class="gridWrapper">
+    <div class="contact">
+      <p>Made in Toronto by Katharine Murr.</p>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/katharine-murr/" title="LinkedIn">LI</a></li>
+        <li><a href="https://github.com/yourpalkat" title="GitHub">GH</a></li>
+      </ul>
+    </div>
+    <div class="colophon">
+      <p>Built with <a href="https://www.gatsbyjs.org/">Apollo</a>. Hosted by <a href="https://www.netlify.com/">Netlify.</a> </p>
+      <p>Headline type treatments based on an example by <a href="https://rwt.io/">Jason Pamental.</a> Fonts: Ultra by Astigmatic, Roboto Sans by Christian Robertson, via Google.</p>
+    </div>
+    <div class="copyright">
+      <p>Copyright &copy; {new Date().getFullYear()}. All rights reserved, all wrongs reversed. Thanks for stopping by!</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+footer {
+  background-color: rgb(38, 27, 26);
+  position: sticky;
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 4rem 0;
+}
+footer p {
+  color: var(--background);
+  font-size: 1.4rem;
+}
+
+.contact {
+  grid-column: 2 / 7;
+}
+.contact ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+}
+.contact li {
+  margin-inline-end: 4rem;
+}
+.contact a {
+  font-size: 1.85rem;
+  color: var(--background);
+  transition: color 0.3s ease;
+}
+.contact a:hover,
+.contact a:focus {
+  color: var(--highlight);
+}
+.colophon,
+.copyright {
+  grid-column: 7 / -2;
+}
+.colophon a {
+  color: var(--background);
+}
+.colophon a:hover,
+.colophon a:focus {
+  color: var(--highlight);
+}
+.colophon p:last-of-type {
+  margin-bottom: 0;
+}
+.copyright p {
+  margin-top: 0;
+}
+
+@media (max-width: 675px) {
+  .contact,
+  .colophon,
+  .copyright {
+    grid-column: 2 / -2;
+  }
+}
+</style>
