@@ -1,0 +1,15 @@
+---
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+---
+<Layout>
+  <section id="project-page">
+    <div class="gridWrapper">
+      <div class="contentBlock">
+        <h2 class="title">{frontmatter.title}</h2>
+        <h4 class="date">{frontmatter.publishedDate}</h4>
+        <slot></slot>
+      </div>
+    </div>
+  </section>
+</Layout>

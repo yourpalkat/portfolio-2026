@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Layout.astro
+layout: ../../layouts/ProjectLayout.astro
 title: 'Ezra Coaching'
 slug: 'ezra'
 pubDate: 2026-01-26

@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Layout.astro
+layout: ../../layouts/ProjectLayout.astro
 title: 'Juno College'
 slug: 'juno'
 pubDate: 2026-01-26

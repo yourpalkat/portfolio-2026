@@ -1,7 +1,7 @@
 ---
-layout: ../../layouts/Layout.astro
+layout: ../../layouts/ProjectLayout.astro
 title: 'Personal Record'
-slug: 'personalrecord'
+slug: 'personal-record'
 pubDate: 2026-01-26
 featureOrder: 3
 author: 'Kat'

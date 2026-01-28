@@ -1,5 +1,6 @@
 ---
 import Layout from "./Layout.astro";
+import Carousel from "../components/Carousel.astro";
 const { frontmatter } = Astro.props;
 ---
 
@@ -7,6 +8,7 @@ const { frontmatter } = Astro.props;
   <section id="project-page" class="projectPage">
     <div class="gridWrapper">
       <div class="imageBlock">
+        <Carousel projectName={frontmatter.slug} />
         <!-- {project.screenshots && project.screenshots.length > 0 && <Carousel screenshots={project.screenshots} />} -->
       </div>
 

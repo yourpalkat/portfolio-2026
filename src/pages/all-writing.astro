@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FancyText from '../components/FancyText.astro';
+import PostCard from '../components/PostCard.astro';
+const allWriting = Object.values(import.meta.glob('../pages/writing/*.md', { eager: true }));
+---
+
+<Layout>
+  <section id="all-writing" class="pageSection">
+    <div class="gridWrapper">
+      <div class="indexTitleBlock">
+        <FancyText text="writ ing arc hive" label="writing archive" />
+      </div>
+      <div class="indexContentBlock">
+        <h3 class="title">Writing</h3>
+        <p>This is it, this is everything. Here are all the posts in the archive. Mostly I write to just try and figure things out for myself; if someone else gets something useful out of it, that's a wonderful bonus, but I generally don't consider myself an expert in anything enough to say: Here, here is how a thing is done, etc. So, caveat lector and all that.</p>
+        <div class="projectCardSection">
+          {allWriting.map(post => <PostCard post={post} />)}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Layout.astro
+layout: ../../layouts/ProjectLayout.astro
 title: 'Richardson Sales Performance'
 slug: 'richardson'
 pubDate: 2026-01-26

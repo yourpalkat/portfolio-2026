@@ -1,0 +1,38 @@
+---
+const { post } = Astro.props;
+---
+<article class="postCard">
+  <div class="postContent">
+    <h5>{new Date(post.frontmatter.pubDate).toLocaleDateString("EN-US", { year: 'numeric', month: 'long', day: 'numeric' })}</h5>
+    <h4>{post.frontmatter.title}</h4>
+    <p>{post.frontmatter.introText}</p>
+    <a href={`/writing/${post.frontmatter.slug}`}>Read more...</a>
+  </div>
+</article>
+
+<style>
+.postCard {
+  margin-bottom: 4.8rem;
+}
+
+.postCard h4 {
+  margin-top: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid black;
+}
+.postCard h5 {
+  margin-bottom: 0;
+  color: #555;
+}
+.postCard p a {
+  color: black;
+  font-family: var(--font-body-bold);
+  font-weight: 700;
+  text-decoration-color: rgba(0, 0, 0, 0.2);
+  transition: text-decoration-color 0.3s ease;
+}
+.postCard p a:hover,
+.postCard p a:focus {
+  text-decoration-color: rgba(0, 0, 0, 1);
+}
+</style>
