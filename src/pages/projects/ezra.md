@@ -8,7 +8,7 @@ author: 'Kat'
 description: 'Short description for meta tags and sharing purposes goes here.'
 introText: 'Short intro text for the project card would go here.'
 thumbnail:
-    url: 'assets/images/projects/ezra/thumbnail.png'
+    url: 'ezra-thumb.jpg'
     alt: 'Screenshot of the ezra.com website'
 tags: ["projects", "design systems", "react"]
 ---

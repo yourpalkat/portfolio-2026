@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FancyText from '../components/FancyText.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+const allProjects = Object.values(import.meta.glob('../pages/projects/*.md', { eager: true }));
+---
+
+<Layout>
+  <section id="all-projects" class="pageSection">
+    <div class="gridWrapper">
+      <div class="indexTitleBlock">
+        <FancyText text="projects archive" />
+      </div>
+      <div class="indexContentBlock">
+        <h3 class="title">All projects</h3>
+        <p>Well, you asked for it. These are all the projects and experiments I have to show right now!</p>
+        <div class="projectCardSection">
+          {allProjects.map(project => <ProjectCard project={project} />)}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

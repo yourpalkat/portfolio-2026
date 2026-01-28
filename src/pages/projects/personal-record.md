@@ -8,7 +8,7 @@ author: 'Kat'
 description: 'Short description for meta tags and sharing purposes goes here.'
 introText: 'Short intro text for the project card would go here.'
 thumbnail:
-    url: 'assets/images/thumbnails/pr-thumb.jpg'
+    url: 'pr-thumb.jpg'
     alt: 'Screenshot of the Personal Record web app'
 tags: ["projects", "full stack", "react"]
 ---
