@@ -15,7 +15,7 @@ const allProjects = Object.values(import.meta.glob('../pages/projects/*.md', { e
         <h3 class="title">All projects</h3>
         <p>Well, you asked for it. These are all the projects and experiments I have to show right now!</p>
         <div class="projectCardSection">
-          {allProjects.map(project => <ProjectCard project={project} />)}
+          {allProjects.sort((a: any, b: any) => a.frontmatter.featureOrder - b.frontmatter.featureOrder).map(project => <ProjectCard project={project} />)}
         </div>
       </div>
     </div>
