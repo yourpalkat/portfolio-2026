@@ -41,16 +41,16 @@ const featuredWriting = allWriting.sort((a: any, b: any) => a.frontmatter.featur
 }
 
 .indexContentBlock a {
-  color: var(--highlight);
+  color: var(--theme-content-highlight);
   font-family: $font-body-bold;
   font-weight: 700;
-  text-decoration-color: var(--highlight);
+  text-decoration-color: var(--theme-content-highlight);
   transition: text-decoration-color 0.3s ease, color 0.3s ease;
-}
-.indexContentBlock a:hover,
-.indexContentBlock a:focus {
-  color: black;
-  text-decoration-color: rgba(0, 0, 0, 1);
+  &:hover,
+  &:focus {
+    color: var(--theme-content-primary);
+    text-decoration-color: var(--theme-content-primary);
+  }
 }
 
 @media (max-width: 768px) {

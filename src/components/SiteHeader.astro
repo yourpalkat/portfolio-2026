@@ -1,4 +1,5 @@
 ---
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <header class="siteHeader">
@@ -13,6 +14,7 @@
         <ul>
           <li><a href='/all-projects'>Projects</a></li>
           <li><a href='/all-writing'>Writing</a></li>
+          <li class="themeToggleContainer"><ThemeToggle /></li>
         </ul>
     </nav>
   </div>
@@ -39,23 +41,22 @@
 }
 .siteName a,
 .mobileSiteName a {
-  color: #000;
+  color: var(--theme-content-primary);
   text-decoration-color: transparent;
   transition: text-decoration-color 0.3s ease, color 0.3s ease;
-}
-.siteName a:focus,
-.siteName a:hover,
-.mobileSiteName a:focus,
-.mobileSiteName a:hover {
-  color: var(--highlight);
-  text-decoration-color: var(--highlight);
+
+  &:focus,
+  &:hover {
+  color: var(--theme-content-highlight);
+  text-decoration-color: var(--theme-content-highlight);
+  }
 }
 
 .siteHeader {
   height: 7rem;
   padding-top: 3rem;
-  background-color: var(--background);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--theme-surface-primary);
+  border-bottom: 1px solid var(--theme-surface-secondary);
   position: sticky;
   top: 0;
   z-index: 20;
@@ -86,18 +87,23 @@
 .mainNav li {
   margin-inline-end: 4rem;
 }
+
+.mainNav .themeToggleContainer {
+  margin-inline-end: 0;
+  margin-inline-start: auto;
+}
 .mainNav a {
-  color: #333;
+  color: var(--theme-content-primary);
   font-size: 1.6rem;
   line-height: 2.4rem;
   letter-spacing: -0.025rem;
   text-decoration-color: transparent;
   transition: text-decoration-color 0.3s ease, color 0.3s ease;
-}
-.mainNav a:hover,
-.mainNav a:focus {
-  color: var(--highlight);
-  text-decoration-color: var(--highlight);
+  &:hover,
+  &:focus {
+    color: var(--theme-content-highlight);
+    text-decoration-color: var(--theme-content-highlight);
+  }
 }
 
 @media (max-width: 768px) {
