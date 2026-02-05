@@ -37,7 +37,8 @@
 
 <style>
 footer {
-  background-color: rgb(38, 27, 26);
+  background-color: var(--theme-surface-secondary);
+  color: var(--theme-content-secondary);
   position: sticky;
   z-index: 0;
   bottom: 0;
@@ -46,7 +47,6 @@ footer {
   padding: 4rem 0;
 }
 footer p {
-  color: var(--background);
   font-size: 1.4rem;
 }
 
@@ -65,23 +65,23 @@ footer p {
 }
 .contact a {
   font-size: 1.85rem;
-  color: var(--background);
+  color: var(--theme-content-secondary);
   transition: color 0.3s ease;
 }
 .contact a:hover,
 .contact a:focus {
-  color: var(--highlight);
+  color: var(--theme-content-highlight);
 }
 .colophon,
 .copyright {
   grid-column: 7 / -2;
 }
 .colophon a {
-  color: var(--background);
+  color: var(--theme-content-secondary);
 }
 .colophon a:hover,
 .colophon a:focus {
-  color: var(--highlight);
+  color: var(--theme-content-highlight);
 }
 .colophon p:last-of-type {
   margin-bottom: 0;

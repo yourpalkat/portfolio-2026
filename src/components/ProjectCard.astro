@@ -42,18 +42,19 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
   margin-top: 0;
   padding-bottom: 0.5rem;
   grid-column: 1 / -1;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--theme-content-highlight);
 }
 .projectContent a {
-  color: black;
+  color: var(--theme-content-highlight);
   font-family: var(--font-body-bold);
   font-weight: 700;
-  text-decoration-color: rgba(0, 0, 0, 0.3);
-  transition: text-decoration-color 0.3s ease;
-}
-.projectContent a:hover,
-.projectContent a:focus {
-  text-decoration-color: rgba(0, 0, 0, 1);
+  text-decoration-color: var(--theme-content-highlight);
+  transition: text-decoration-color 0.3s ease, color 0.3s ease;
+  &:hover,
+  &:focus {
+    color: var(--theme-content-primary);
+    text-decoration-color: var(--theme-content-primary);
+  }
 }
 .projectContent p:first-of-type {
   margin-top: 0;
