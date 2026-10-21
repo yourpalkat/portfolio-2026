@@ -1,17 +1,19 @@
 ---
 layout: ../../layouts/ProjectLayout.astro
-title: 'Juno College'
-slug: 'juno'
+title: "Juno College"
+slug: "juno"
 pubDate: 2026-01-26
-featureOrder: 2
-author: 'Kat'
-description: 'Short description for meta tags and sharing purposes goes here.'
-introText: 'Working as part of a small team on a tight schedule, we built a modern JAMstack site to launch the new brand of Juno College of Technology. Developed with Gatsby, Contentful and Netlify, the new junocollege.com is beautiful, fast, and an essential part of the school’s identity.'
+featureOrder: 3
+author: "Kat"
+externalUrl: "https://junocollege.com"
+description: "Short description for meta tags and sharing purposes goes here."
+introText: "Working as part of a small team on a tight schedule, we built a modern JAMstack site to launch the new brand of Juno College of Technology. Developed with Gatsby, Contentful and Netlify, the new junocollege.com is beautiful, fast, and an essential part of the school’s identity."
 thumbnail:
-    url: 'juno-thumb.jpg'
-    alt: 'Screenshot of the junocollege.com website'
+  url: "juno-thumb.jpg"
+  alt: "Screenshot of the junocollege.com website"
 tags: ["projects", "gatsby", "react"]
 ---
+
 HackerYou was a huge part of the Toronto tech scene: the school was an entry point to a new career, the center of a thriving and supportive community, and it meant a lot to the hundreds of students who attended – myself included! When they announced that they were rebranding to Juno College of Technology and growing, that was exciting news. And when they asked if I would join their team to help build out an all-new site to support this new identity, I jumped at the opportunity.
 
 The deadline for a soft-launch of the site was very tight. We had chosen Gatsby as our front-end framework, which allowed us to get a site skeleton up very quickly – one with near-perfect Lighthouse scores out of the box, and one that provided a solid foundation to build the rest of the site components upon. It also played nicely with the headless CMS HackerYou had already been using, which meant we didn't have to transfer several years' worth of blog posts to a new system.
