@@ -1,0 +1,48 @@
+---
+import Image from "astro/components/Image.astro";
+const { projectName } = Astro.props;
+const allProductImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/projects/*.{jpeg,jpg,gif,png}",
+);
+const displayImages = Object.keys(allProductImages).filter((image) =>
+  image.includes(projectName),
+);
+---
+
+<div class="imageGrid" style=`--image-total: ${displayImages.length};`>
+  {
+    displayImages.length &&
+      allProductImages &&
+      displayImages.map((imagePath) => (
+        <div class="imageContainer">
+          <Image src={allProductImages[imagePath]()} alt="" />
+        </div>
+      ))
+  }
+</div>
+
+<style>
+  .imageGrid {
+    display: grid;
+    grid-template-columns: repeat(var(--image-total), minmax(260px, 1fr));
+    gap: 2.4rem;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: scroll;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr;
+      overflow: hidden;
+    }
+  }
+
+  .imageContainer {
+    width: 100%;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+</style>
