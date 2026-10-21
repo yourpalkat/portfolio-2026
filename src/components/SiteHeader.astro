@@ -11,116 +11,258 @@ import ThemeToggle from "./ThemeToggle.astro";
       <a href="/">KM</a>
     </h1>
     <nav class="mainNav">
-        <ul>
-          <li><a href='/all-projects'>Projects</a></li>
-          <li><a href='/all-writing'>Writing</a></li>
-          <li class="themeToggleContainer"><ThemeToggle /></li>
-        </ul>
+      <ul>
+        <li><a href="/all-projects">Projects</a></li>
+        <li><a href="/all-writing">Writing</a></li>
+        <li class="themeToggleContainer"><ThemeToggle /></li>
+      </ul>
     </nav>
+  </div>
+
+  <!-- Lightbox container -->
+  <!-- This is hacky, but putting it in the header ensures if a lightbox is visible it will cover the sticky nav -->
+  <!-- TODO: refactor this so the lightbox container can live in the proper component, this is silly and i hate it -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <div class="lightbox-content">
+      <!-- Close button -->
+      <button class="lightbox-close" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor"></line>
+          <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor"></line>
+        </svg>
+      </button>
+
+      <!-- Navigation -->
+      <button class="lightbox-nav lightbox-prev" aria-label="Previous">‹</button
+      >
+      <button class="lightbox-nav lightbox-next" aria-label="Next">›</button>
+
+      <!-- Image -->
+      <img class="lightbox-image" id="lightbox-img" src="" alt="" />
+
+      <!-- Counter -->
+      <div class="lightbox-counter">
+        <span id="current">1</span> / <span id="total">3</span>
+      </div>
+    </div>
   </div>
 </header>
 
 <style>
-.siteName {
-  grid-column: 2 / 6;
-  font-family: var(--font-body-bold);
-  font-size: 1.6rem;
-  line-height: 2.4rem;
-  letter-spacing: -0.025rem;
-  margin-top: 0;
-}
-.mobileSiteName {
-  grid-column: 2 / 3;
-  font-family: $font-heading;
-  text-transform: lowercase;
-  font-size: 1.6rem;
-  line-height: 2.4rem;
-  letter-spacing: -0.025rem;
-  margin-top: 0;
-  display: none;
-}
-.siteName a,
-.mobileSiteName a {
-  color: var(--theme-content-primary);
-  text-decoration-color: transparent;
-  transition: text-decoration-color 0.3s ease, color 0.3s ease;
-
-  &:focus,
-  &:hover {
-  color: var(--theme-content-highlight);
-  text-decoration-color: var(--theme-content-highlight);
-  }
-}
-
-.siteHeader {
-  height: 7rem;
-  padding-top: 3rem;
-  background-color: var(--theme-surface-primary);
-  border-bottom: 1px solid var(--theme-surface-secondary);
-  position: sticky;
-  top: 0;
-  z-index: 20;
-}
-
-@media (max-width: 505px) {
-  .mobileSiteName {
-    display: block;
-  }
   .siteName {
+    grid-column: 2 / 6;
+    font-family: var(--font-body-bold);
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: -0.025rem;
+    margin-top: 0;
+  }
+  .mobileSiteName {
+    grid-column: 2 / 3;
+    font-family: $font-heading;
+    text-transform: lowercase;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: -0.025rem;
+    margin-top: 0;
     display: none;
   }
-}
+  .siteName a,
+  .mobileSiteName a {
+    color: var(--theme-content-primary);
+    text-decoration-color: transparent;
+    transition:
+      text-decoration-color 0.3s ease,
+      color 0.3s ease;
 
-/* Main Navigation styles 
+    &:focus,
+    &:hover {
+      color: var(--theme-content-highlight);
+      text-decoration-color: var(--theme-content-highlight);
+    }
+  }
+
+  .siteHeader {
+    height: 7rem;
+    padding-top: 3rem;
+    background-color: var(--theme-surface-primary);
+    border-bottom: 1px solid var(--theme-surface-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  @media (max-width: 505px) {
+    .mobileSiteName {
+      display: block;
+    }
+    .siteName {
+      display: none;
+    }
+  }
+
+  /* Main Navigation styles 
   =================================================== */
 
-.mainNav {
-  grid-column: 7 / -2;
-}
-.mainNav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: flex-start;
-}
-.mainNav li {
-  margin-inline-end: 4rem;
-}
-
-.mainNav .themeToggleContainer {
-  margin-inline-end: 0;
-  margin-inline-start: auto;
-}
-.mainNav a {
-  color: var(--theme-content-primary);
-  font-size: 1.6rem;
-  line-height: 2.4rem;
-  letter-spacing: -0.025rem;
-  text-decoration-color: transparent;
-  transition: text-decoration-color 0.3s ease, color 0.3s ease;
-  &:hover,
-  &:focus {
-    color: var(--theme-content-highlight);
-    text-decoration-color: var(--theme-content-highlight);
-  }
-}
-
-@media (max-width: 768px) {
   .mainNav {
-    grid-column: 6 / -2;
+    grid-column: 7 / -2;
   }
   .mainNav ul {
-    justify-content: flex-end;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
   }
   .mainNav li {
+    margin-inline-end: 4rem;
+  }
+
+  .mainNav .themeToggleContainer {
     margin-inline-end: 0;
-    margin-inline-start: 4rem;
+    margin-inline-start: auto;
   }
-}
-@media (max-width: 505px) {
-  .mainNav {
-    grid-column: 3 / -2;
+  .mainNav a {
+    color: var(--theme-content-primary);
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: -0.025rem;
+    text-decoration-color: transparent;
+    transition:
+      text-decoration-color 0.3s ease,
+      color 0.3s ease;
+    &:hover,
+    &:focus {
+      color: var(--theme-content-highlight);
+      text-decoration-color: var(--theme-content-highlight);
+    }
   }
-}
+
+  @media (max-width: 768px) {
+    .mainNav {
+      grid-column: 6 / -2;
+    }
+    .mainNav ul {
+      justify-content: flex-end;
+    }
+    .mainNav li {
+      margin-inline-end: 0;
+      margin-inline-start: 4rem;
+    }
+  }
+  @media (max-width: 505px) {
+    .mainNav {
+      grid-column: 3 / -2;
+    }
+  }
+
+  /* Lightbox container styles 
+  =================================================== */
+  /* Background overlay */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Entry animation */
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .lightbox.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Image container */
+  .lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+
+    /* Zoom animation */
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+  }
+
+  .lightbox.active .lightbox-content {
+    transform: scale(1);
+  }
+
+  /* Main image */
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+  }
+
+  /* Counter */
+  .lightbox-counter {
+    font-family: var(--font-body-regular);
+    margin-top: 1.2rem;
+    font-size: 1.2rem;
+    color: var(--theme-content-secondary);
+  }
+
+  /* Close button */
+  .lightbox-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--theme-content-highlight);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .lightbox-close:hover {
+    background: var(--theme-content-callout);
+    color: var(--theme-surface-primary);
+    transform: rotate(90deg);
+  }
+
+  /* Navigation buttons */
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: var(--theme-content-highlight);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .lightbox-prev {
+    left: 0px;
+  }
+  .lightbox-next {
+    right: 0px;
+  }
+
+  .lightbox-nav:hover {
+    background: var(--theme-content-callout);
+    color: var(--theme-content-primary);
+  }
 </style>
