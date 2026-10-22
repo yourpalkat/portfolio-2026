@@ -9,15 +9,52 @@ const displayImages = Object.keys(allProductImages).filter((image) =>
 );
 ---
 
+<dialog id="lightbox-dialog">
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <!-- Close button -->
+      <button
+        class="lightbox-close"
+        aria-label="Close lightbox modal"
+        commandfor="lightbox-dialog"
+        command="close"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor"></line>
+          <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor"></line>
+        </svg>
+      </button>
+
+      <!-- Navigation -->
+      <button class="lightbox-nav lightbox-prev" aria-label="Previous">‹</button
+      >
+      <button class="lightbox-nav lightbox-next" aria-label="Next">›</button>
+
+      <!-- Image -->
+      <img class="lightbox-image" id="lightbox-img" src="" alt="" />
+
+      <!-- Counter -->
+      <div class="lightbox-counter">
+        <span id="current">1</span> / <span id="total">3</span>
+      </div>
+    </div>
+  </div>
+</dialog>
+
 <!-- Image Gallery -->
 <div class="imageGrid" style=`--image-total: ${displayImages.length};`>
   {
     displayImages.length &&
       allProductImages &&
       displayImages.map((imagePath) => (
-        <div class="imageContainer">
-          <Image src={allProductImages[imagePath]()} alt="" data-lightbox />
-        </div>
+        <button
+          command="show-modal"
+          commandfor="lightbox-dialog"
+          class="imageContainer"
+          data-lightbox
+        >
+          <Image src={allProductImages[imagePath]()} alt="" />
+        </button>
       ))
   }
 </div>
@@ -39,92 +76,235 @@ const displayImages = Object.keys(allProductImages).filter((image) =>
 
   .imageContainer {
     width: 100%;
+    padding: 0;
+    margin: 0;
+    appearance: none;
+    border: 0;
+    cursor: zoom-in;
 
     img {
       width: 100%;
       max-width: 100%;
       height: auto;
     }
+
+    &:focus-visible {
+      outline: 3px solid var(--theme-content-highlight);
+      outline-offset: -3px;
+    }
+  }
+
+  /* Lightbox container styles 
+  =================================================== */
+  /* Open state of the dialog  */
+  dialog:open {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Closed state of the dialog   */
+  dialog {
+    opacity: 0;
+    background-color: transparent;
+    border: none;
+    overflow: visible;
+    transform: scale(0.7);
+    transition:
+      opacity 0.25s ease-out,
+      transform 0.25s ease-out,
+      overlay 0.25s ease-out allow-discrete,
+      display 0.25s ease-out allow-discrete;
+    /* Equivalent to
+    transition: all 0.25s allow-discrete; */
+  }
+
+  /* Before open state  */
+  /* Needs to be after the previous dialog:open rule to take effect,
+    as the specificity is the same */
+  @starting-style {
+    dialog:open {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+  }
+
+  /* Transition the :backdrop when the dialog modal is promoted to the top layer */
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    transition:
+      display 0.25s allow-discrete,
+      overlay 0.25s allow-discrete,
+      background-color 0.25s;
+    /* Equivalent to
+  transition: all 0.25s allow-discrete; */
+  }
+
+  dialog:open::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+
+  /* This starting-style rule cannot be nested inside the above selector
+because the nesting selector cannot represent pseudo-elements. */
+
+  @starting-style {
+    dialog:open::backdrop {
+      background-color: transparent;
+    }
+  }
+
+  /* Image container */
+  .lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+
+  /* Main image */
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+  }
+
+  /* Counter */
+  .lightbox-counter {
+    font-family: var(--font-body-regular);
+    margin-top: 1.2rem;
+    font-size: 1.2rem;
+    color: var(--theme-content-secondary);
+  }
+
+  /* Close button */
+  .lightbox-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--colour-white);
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--colour-white);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      background: var(--theme-content-callout);
+      transform: rotate(90deg);
+    }
+  }
+
+  /* Navigation buttons */
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--colour-white);
+    border-radius: 50%;
+    color: var(--colour-white);
+    font-size: 24px;
+    line-height: 1;
+    padding-block-end: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      background: var(--theme-content-callout);
+    }
+  }
+
+  .lightbox-prev {
+    left: 0px;
+  }
+  .lightbox-next {
+    right: 0px;
   }
 </style>
 
 <script>
   class Lightbox {
-    lightbox: HTMLElement | null;
-    image: HTMLImageElement | null;
-    images: NodeListOf<HTMLImageElement> | null;
+    lightboxEl: HTMLElement | null;
+    imageEl: HTMLImageElement | null;
+    triggerButtons: HTMLButtonElement[] | null;
     currentIndex: number;
+    dialogEl: HTMLDialogElement | null;
 
     constructor() {
-      this.lightbox = document.getElementById("lightbox");
-      this.image = document.getElementById(
+      this.lightboxEl = document.getElementById("lightbox");
+      this.imageEl = document.getElementById(
         "lightbox-img",
       ) as HTMLImageElement | null;
-      this.images = [...document.querySelectorAll("[data-lightbox]")];
+      this.triggerButtons = [
+        ...document.querySelectorAll("[data-lightbox]"),
+      ] as HTMLButtonElement[];
       this.currentIndex = 0;
+      this.dialogEl = document.getElementById(
+        "lightbox-dialog",
+      ) as HTMLDialogElement | null;
 
       this.init();
     }
 
     init() {
       // Click on gallery images
-      this.images?.forEach((img, index) => {
-        img.addEventListener("click", () => this.open(index));
-        img.style.cursor = "pointer";
+      this.triggerButtons?.forEach((button, index) => {
+        button.addEventListener("click", () => this.setInitialImage(index));
       });
 
-      // Control buttons
-      this.lightbox
-        ?.querySelector(".lightbox-close")
-        ?.addEventListener("click", () => this.close());
-      this.lightbox
+      this.lightboxEl
         ?.querySelector(".lightbox-prev")
         ?.addEventListener("click", () => this.prev());
-      this.lightbox
+      this.lightboxEl
         ?.querySelector(".lightbox-next")
         ?.addEventListener("click", () => this.next());
-
-      // Close by clicking the background
-      this.lightbox?.addEventListener("click", (e) => {
-        if (e.target === this.lightbox) this.close();
-      });
 
       // Keyboard navigation
       document.addEventListener("keydown", (e) => this.handleKeyboard(e));
     }
 
-    open(index: number) {
+    setInitialImage(index: number) {
       this.currentIndex = index;
       this.updateImage();
-      this.lightbox?.classList.add("active");
-      document.body.style.overflow = "hidden";
-    }
-
-    close() {
-      this.lightbox?.classList.remove("active");
-      document.body.style.overflow = "";
     }
 
     prev() {
-      if (this.images) {
+      if (this.triggerButtons) {
         this.currentIndex =
-          (this.currentIndex - 1 + this.images.length) % this.images.length;
+          (this.currentIndex - 1 + this.triggerButtons.length) %
+          this.triggerButtons.length;
         this.updateImage();
       }
     }
 
     next() {
-      if (this.images) {
-        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+      if (this.triggerButtons) {
+        this.currentIndex =
+          (this.currentIndex + 1) % this.triggerButtons.length;
         this.updateImage();
       }
     }
 
     updateImage() {
-      const img = this.images?.[this.currentIndex];
-      if (img && this.image) {
-        this.image.src = img?.src;
-        this.image.alt = img?.alt;
+      const img = this.triggerButtons?.[this.currentIndex].querySelector("img");
+      if (img && this.imageEl) {
+        this.imageEl.src = img?.src;
+        this.imageEl.alt = img?.alt;
       }
 
       // Update counter
@@ -133,18 +313,15 @@ const displayImages = Object.keys(allProductImages).filter((image) =>
         currentEl.textContent = (this.currentIndex + 1).toString();
       }
       const totalEl = document.getElementById("total");
-      if (totalEl && this.images) {
-        totalEl.textContent = this.images.length.toString();
+      if (totalEl && this.triggerButtons) {
+        totalEl.textContent = this.triggerButtons.length.toString();
       }
     }
 
     handleKeyboard(e: KeyboardEvent) {
-      if (!this.lightbox?.classList.contains("active")) return;
-
+      if (!this.dialogEl?.open) return;
+      // We don't need to listen for esc, the native dialog element handles that
       switch (e.key) {
-        case "Escape":
-          this.close();
-          break;
         case "ArrowLeft":
           this.prev();
           break;
