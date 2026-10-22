@@ -44,8 +44,8 @@ import ThemeToggle from "./ThemeToggle.astro";
     color: var(--theme-content-primary);
     text-decoration-color: transparent;
     transition:
-      text-decoration-color 0.3s ease,
-      color 0.3s ease;
+      text-decoration-color 0.3s ease-in-out,
+      color 0.3s ease-in-out;
 
     &:focus,
     &:hover {
@@ -93,6 +93,20 @@ import ThemeToggle from "./ThemeToggle.astro";
   .mainNav .themeToggleContainer {
     margin-inline-end: 0;
     margin-inline-start: auto;
+
+    #themeToggle {
+      color: var(--theme-content-primary);
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: var(--theme-content-highlight);
+      }
+      &:focus,
+      &:focus-visible {
+        color: var(--theme-content-highlight);
+        outline: 2px solid var(--theme-content-highlight);
+      }
+    }
   }
   .mainNav a {
     color: var(--theme-content-primary);
