@@ -108,6 +108,8 @@ const displayImages = Object.keys(allProductImages).filter((image) =>
     background-color: transparent;
     border: none;
     overflow: visible;
+    /* ensure the close button doesn't fall outside the viewport on small/wide screens */
+    max-height: calc(100vh - 80px);
     transform: scale(0.7);
     transition:
       opacity 0.25s ease-out,
