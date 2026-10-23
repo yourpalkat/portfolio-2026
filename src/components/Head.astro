@@ -1,0 +1,30 @@
+---
+const {
+  title = "Katharine Murr | Front-end web developer",
+  description = "Kat is a front-end developer based in Toronto, Canada. She emphasizes design systems, open standards, and accessibility.",
+  canonicalUrl = "https://katharinemurr.com",
+  shareImagePath = "/assets/shareImage.png",
+  shareImageAlt = "",
+  ...props
+} = Astro.props;
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <meta name="generator" content={Astro.generator} />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <!-- Open Graph tags -->
+  <meta property="og:title" content={title} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={shareImagePath} />
+  <meta property="og:image:alt" content={shareImageAlt ? shareImageAlt : ""} />
+</head>

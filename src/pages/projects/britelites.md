@@ -1,17 +1,18 @@
 ---
 layout: ../../layouts/ProjectLayout.astro
-title: 'Brite Lites'
-slug: 'britelites'
+title: "Brite Lites"
+slug: "britelites"
 pubDate: 2026-01-26
 featureOrder: 4
-author: 'Kat'
-description: 'Short description for meta tags and sharing purposes goes here.'
-introText: 'A digital toy, based on a popular children’s favourite: light up the bulbs in different colours to make a picture, save your creations and load them back later! It’s fully responsive, with a smaller drawing area on mobile, and uses Firebase for the save/load functionality.'
+author: "Kat"
+description: "Project summary of Brite Lites, a self-initiated side project: what I built, challenges faced, lessons learned."
+introText: "A digital toy, based on a popular children’s favourite: light up the bulbs in different colours to make a picture, save your creations and load them back later! It’s fully responsive, with a smaller drawing area on mobile, and uses Firebase for the save/load functionality."
 thumbnail:
-    url: 'britelites-thumb.jpg'
-    alt: 'Screenshot of the Brite Lites web app'
+  url: "britelites-thumb.jpg"
+  alt: "Screenshot of the Brite Lites web app"
 tags: ["projects", "react", "firebase"]
 ---
+
 I've said before that the best way to learn something well is to teach it to someone else, but maybe the most fun way to learn something is to use it to build toys.
 
 Brite Lites was the first app I developed using React, and was a fun way to learn concepts like state management, one-directional data flow, and component-based development. Plus, it was a great excuse to do some CSS illustration (the only image file used in this app is the wood-grain background; everything else is done with CSS).

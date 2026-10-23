@@ -5,7 +5,7 @@ slug: "personal-record"
 pubDate: 2026-01-26
 featureOrder: 4
 author: "Kat"
-description: "Short description for meta tags and sharing purposes goes here."
+description: "Project summary of Personal Record, a self-driven side project: what I built, challenges faced, lessons learned."
 introText: "Personal Record is a simple web app to log your running workouts. This side-project of mine was my first full-stack application: I’m responsible for the whole thing, end-to-end: API design, back-end code (Node, Express, Mongoose) and front-end (React, SCSS modules)."
 thumbnail:
   url: "pr-thumb.jpg"

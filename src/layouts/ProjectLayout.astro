@@ -4,7 +4,11 @@ import LightboxGrid from "../components/LightboxGrid.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<Layout>
+<Layout
+  title={"Katharine Murr | Web development project: " + frontmatter.title}
+  description={frontmatter.description}
+  canonicalUrl={"https://katharinemurr.com/projects/" + frontmatter.slug}
+>
   <section id="project-page" class="projectPage">
     <div class="gridWrapper">
       <div class="imageBlock">

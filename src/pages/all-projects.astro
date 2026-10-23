@@ -1,11 +1,17 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import FancyText from '../components/FancyText.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-const allProjects = Object.values(import.meta.glob('../pages/projects/*.md', { eager: true }));
+import Layout from "../layouts/Layout.astro";
+import FancyText from "../components/FancyText.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+const allProjects = Object.values(
+  import.meta.glob("../pages/projects/*.md", { eager: true }),
+);
 ---
 
-<Layout>
+<Layout
+  title="Katharine Murr | Front-end web developer | Projects archive"
+  description="Archive of all featured projects by Katharine Murr, a Toronto-based front-end web developer."
+  canonicalUrl="https://katharinemurr.com/all-projects"
+>
   <section id="all-projects" class="pageSection">
     <div class="gridWrapper">
       <div class="indexTitleBlock">
@@ -13,9 +19,19 @@ const allProjects = Object.values(import.meta.glob('../pages/projects/*.md', { e
       </div>
       <div class="indexContentBlock">
         <h3 class="title">All projects</h3>
-        <p>Well, you asked for it. These are all the projects and experiments I have to show right now!</p>
+        <p>
+          Well, you asked for it. These are all the projects and experiments I
+          have to show right now!
+        </p>
         <div class="projectCardSection">
-          {allProjects.sort((a: any, b: any) => a.frontmatter.featureOrder - b.frontmatter.featureOrder).map(project => <ProjectCard project={project} />)}
+          {
+            allProjects
+              .sort(
+                (a: any, b: any) =>
+                  a.frontmatter.featureOrder - b.frontmatter.featureOrder,
+              )
+              .map((project) => <ProjectCard project={project} />)
+          }
         </div>
       </div>
     </div>

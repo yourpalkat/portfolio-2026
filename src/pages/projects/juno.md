@@ -6,7 +6,7 @@ pubDate: 2026-01-26
 featureOrder: 3
 author: "Kat"
 externalUrl: "https://junocollege.com"
-description: "Short description for meta tags and sharing purposes goes here."
+description: "Project summary of client work for junocollege.com: what I built, challenges faced, lessons learned."
 introText: "Working as part of a small team on a tight schedule, we built a modern JAMstack site to launch the new brand of Juno College of Technology. Developed with Gatsby, Contentful and Netlify, the new junocollege.com is beautiful, fast, and an essential part of the school’s identity."
 thumbnail:
   url: "juno-thumb.jpg"

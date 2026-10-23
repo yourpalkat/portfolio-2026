@@ -1,17 +1,18 @@
 ---
 layout: ../../layouts/ProjectLayout.astro
-title: 'Running Rats'
-slug: 'rats'
+title: "Running Rats"
+slug: "rats"
 pubDate: 2026-01-26
 featureOrder: 4
-author: 'Kat'
-description: 'Short description for meta tags and sharing purposes goes here.'
-introText: 'Site design and implementation for the Running Rats, a Toronto-based running club. Built to be lightweight, easy to update, stylish and friendly: semantic HTML, SCSS, and minimal JavaScript.'
+author: "Kat"
+description: "Project summary of client work for RunningRats.com: what I built, challenges faced, lessons learned."
+introText: "Site design and implementation for the Running Rats, a Toronto-based running club. Built to be lightweight, easy to update, stylish and friendly: semantic HTML, SCSS, and minimal JavaScript."
 thumbnail:
-    url: 'rats-thumb.jpg'
-    alt: 'Screenshot of the runningrats.com website'
+  url: "rats-thumb.jpg"
+  alt: "Screenshot of the runningrats.com website"
 tags: ["projects", "html", "css"]
 ---
+
 The Running Rats have been active in Toronto for almost two decades, making them one of the more established running clubs in town, but their web presence was looking a bit rough. The user experience wasn't great: lots of content, semi-organized, not mobile-friendly. Plus, it had been put together using a build-your-own, no-code-required hosting service, which cost more money per month than a free run club should have been spending.
 
 The first step in revising the site was auditing the content and seeing exactly why people visited. There were two main answers: potential members looking for a club to try, often because they were new to town or to running; and existing members, looking to see what that week's route was. Everything else was secondary to those.

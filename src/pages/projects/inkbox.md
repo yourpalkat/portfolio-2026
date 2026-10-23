@@ -5,7 +5,7 @@ slug: "inkbox"
 pubDate: 2026-01-26
 featureOrder: 2
 author: "Kat"
-description: "Short description for meta tags and sharing purposes goes here."
+description: "Project summary of Inkbox.com: what I built, challenges faced, lessons learned."
 introText: "Front-end development, project lead, and design system implementation for this Toronto-based ecommerce company."
 thumbnail:
   url: "inkbox-thumb.jpg"

@@ -6,7 +6,7 @@ pubDate: 2026-10-20
 featureOrder: 1
 externalUrl: "https://videostoreday.com"
 author: "Kat"
-description: "Short description for meta tags and sharing purposes goes here."
+description: "Project summary of client work for VideoStoreDay.com: what I built, challenges faced, lessons learned."
 introText: "I built a site to promote the annual international Video Store Day and allow stores all over the world to sign up and participate, on a shoestring budget and a very short timeline."
 thumbnail:
   url: "vsd-thumb.jpg"

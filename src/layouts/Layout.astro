@@ -1,34 +1,45 @@
 ---
-import '../assets/fonts/fonts.css';
-import '../styles/styles.css';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
+import "../assets/fonts/fonts.css";
+import "../styles/styles.css";
+import Head from "../components/Head.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  shareImagePath?: string;
+  shareImageAlt?: string;
+}
+
+const { title, description, canonicalUrl, shareImagePath, shareImageAlt } =
+  Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Katharine Murr | Front-end web developer</title>
-	</head>
-	<body>
-		<SiteHeader />
-		<main>
-			<slot />
-		</main>
-		<SiteFooter />
-	</body>
+  <Head
+    title={title}
+    description={description}
+    canonicalUrl={canonicalUrl}
+    shareImagePath={shareImagePath}
+    shareImageAlt={shareImageAlt}
+  />
+  <body>
+    <SiteHeader />
+    <main>
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
